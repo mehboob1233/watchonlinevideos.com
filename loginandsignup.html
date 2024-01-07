@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <!-- Meta tags for character set and viewport settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->
+    <title>Registration or Sign Up form | My Website</title>
+    <!-- Firebase SDK scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
+    <!-- Styling for the page -->
+        <style>
+    /* Base styling for the entire body */
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f0f0f0;
+    }
+
+    /* Container styling for the forms */
+    .wrapper {
+        position: relative;
+        max-width: 430px;
+        width: 100%;
+        background: #fff;
+        padding: 34px;
+        border-radius: 6px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    /* Styling for the tabs (Sign Up and Login) */
+    .tab {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    /* Styling for the tab buttons */
+    .tab button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* Hover effect for the tab buttons */
+    .tab button:hover {
+        background-color: #45a049;
+    }
+
+    /* Hide tab content by default */
+    .tabcontent {
+        display: none;
+    }
+
+    /* Styling for the form titles */
+    h2 {
+        position: relative;
+        font-size: 22px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Styling for the underline effect on form titles */
+    h2::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 28px;
+        border-radius: 12px;
+        background: #4070f4;
+    }
+
+    /* Styling for input boxes */
+    .input-box {
+        height: 52px;
+        margin: 18px 0;
+    }
+
+    /* Styling for text input fields */
+    input {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        padding: 0 15px;
+        font-size: 17px;
+        font-weight: 400;
+        color: #333;
+        border: 1.5px solid #C7BEBE;
+        border-bottom-width: 2.5px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+
+    /* Styling for focused and valid input fields */
+    input:focus,
+    input:valid {
+        border-color: #4070f4;
+    }
+
+    /* Styling for the submit button */
+    .input-box.button input {
+        color: #fff;
+        letter-spacing: 1px;
+        border: none;
+        background: #4070f4;
+        cursor: pointer;
+    }
+
+    /* Hover effect for the submit button */
+    .input-box.button input:hover {
+        background: #0e4bf1;
+    }
+
+    /* Styling for the Google Sign In button */
+    .google-btn {
+        background: #4070f4;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    /* Styling for the Google Sign In button's image */
+    .google-btn img {
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    /* Styling for text section */
+    .text h3 {
+        color: #333;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Styling for links in the text section */
+    .text h3 a {
+        color: #4070f4;
+        text-decoration: none;
+    }
+
+    /* Hover effect for links in the text section */
+    .text h3 a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+</head>
+
+<body>
+    <!-- Container for the entire form -->
+    <div class="wrapper">
+        <!-- Tabs for Sign Up and Login -->
+        <div class="tab">
+            <!-- Button to switch to Sign Up form -->
+            <button onclick="openTab(event, 'signup')">Sign Up</button>
+            <!-- Button to switch to Login form -->
+            <button onclick="openTab(event, 'login')">Login</button>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div id="signup" class="tabcontent">
+            <!-- Title for Sign Up form -->
+            <h2>Registration</h2>
+            <!-- Form for user registration -->
+            <form action="#" onsubmit="registerUser(event)">
+                <!-- Input fields for name, email, password, and confirm password -->
+                <div class="input-box">
+                    <input type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="Enter your email" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Create password" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Confirm password" required>
+                </div>
+                <!-- Checkbox for accepting terms and conditions -->
+                <div class="policy">
+                    <input type="checkbox" required>
+                    <h3>I accept all terms & condition</h3>
+                </div>
+                <!-- Button to submit the registration form -->
+                <div class="input-box button">
+                    <input type="submit" value="Register Now">
+                </div>
+                <!-- Link to switch to the Login form -->
+                <div class="text">
+                    <h3>Already have an account? <a href="#" onclick="openTab(event, 'login')">Login now</a></h3>
+                </div>
+            </form>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login" class="tabcontent">
+            <!-- Title for Login form -->
+            <h2>Login</h2>
+            <!-- Form for user login -->
+            <form action="#" onsubmit="loginUser(event)">
+                <!-- Input fields for email and password -->
+                <div class="input-box">
+                    <input type="text" placeholder="Enter your email" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Enter your password" required>
+                </div>
+                <!-- Button to submit the login form -->
+                <div class="input-box button">
+                    <input type="submit" value="Login Now">
+                </div>
+                <!-- Link to switch to the Sign Up form -->
+                <div class="text">
+                    <h3>Don't have an account? <a href="#" onclick="openTab(event, 'signup')">Sign Up now</a></h3>
+                </div>
+            </form>
+        </div>
+
+        <!-- Google Sign In Button -->
+        <div class="google-btn" onclick="signInWithGoogle()">
+            <!-- Google logo and text for the button -->
+            <img src="google-logo.png" alt="Google Logo">
+            Sign In with Google
+        </div>
+    </div>
+
+    <!-- Firebase configuration and initialization script -->
+    <script>
+        // Firebase configuration with API keys and other settings
+        const firebaseConfig = {
+          apiKey: "AIzaSyBSOxmatBfAAFVz4c9483dKBWM-fIUmse8",
+  authDomain: "login-and-signup-d4f3d.firebaseapp.com",
+  projectId: "login-and-signup-d4f3d",
+  storageBucket: "login-and-signup-d4f3d.appspot.com",
+  messagingSenderId: "438633971857",
+  appId: "1:438633971857:web:e54dc7087b46decf29bf30",
+  measurementId: "G-T06WLJPZ36"
+        };
+
+        // Initialize Firebase app and get references to Firestore and Auth
+        const firebaseApp = firebase.initializeApp(firebaseConfig);
+        const db = firebaseApp.firestore();
+        const auth = firebaseApp.auth();
+
+        // Function to switch between Sign Up and Login tabs
+        function openTab(event, tabName) {
+            // Hide all tab content
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            // Remove "active" class from all tab buttons
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            // Show the selected tab content and mark the button as "active"
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+        // Function to register a new user
+        function registerUser(event) {
+            // Prevent form submission
+            event.preventDefault();
+            // Retrieve user input for registration
+            const name = document.querySelector('#signup input[type="text"]').value;
+            const email = document.querySelector('#signup input[type="email"]').value;
+            const password = document.querySelector('#signup input[type="password"]').value;
+
+            // Firebase registration logic
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // User registered successfully
+                    const user = userCredential.user;
+                    console.log("User registered:", user);
+                })
+                .catch((error) => {
+                    // Handle registration errors
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error("Registration error:", errorMessage);
+                });
+        }
+
+        // Function to log in an existing user
+        function loginUser(event) {
+            // Prevent form submission
+            event.preventDefault();
+            // Retrieve user input for login
+            const email = document.querySelector('#login input[type="text"]').value;
+            const password = document.querySelector('#login input[type="password"]').value;
+
+            // Firebase login logic
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // User logged in successfully
+                    const user = userCredential.user;
+                    console.log("User logged in:", user);
+                })
+                .catch((error) => {
+                    // Handle login errors
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error("Login error:", errorMessage);
+                });
+        }
+        // Function to sign in with Google
+        function signInWithGoogle() {
+            // Create a GoogleAuthProvider instance
+            var provider = new firebase.auth.GoogleAuthProvider();
+            
+            // Use Firebase Authentication to sign in with Google
+            firebase.auth().signInWithPopup(provider)
+                .then((result) => {
+                    // Google Sign In success
+                    var user = result.user;
+                    console.log("Google Sign In success:", user);
+                })
+                .catch((error) => {
+                    // Google Sign In error
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.error("Google Sign In error:", errorMessage);
+                });
+        }
+   
+
+    </script>
+</body>
+
+</html>

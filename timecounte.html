@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Countdown</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        /* Body styles */
+body {
+    font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
+    background: linear-gradient(to right, #3494E6, #EC6EAD);
+    color: #FFF;
+    font-size: 1.6em;
+    line-height: 1.5;
+    padding: 20px;
+    animation: gradientAnimation 10s infinite alternate; /* Background animation */
+}
+
+/* Background animation keyframes */
+@keyframes gradientAnimation {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 100% 0%;
+    }
+}
+
+        #counter {
+            font-size: 3em;
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="counter">21600</div> <!-- 21600 seconds = 6 hours -->
+
+    <script>
+        // JavaScript code to implement time counter
+        let count = 21600; // Initial countdown value (6 hours)
+        const counterElement = document.getElementById('counter');
+
+        function updateCounter() {
+            const hours = Math.floor(count / 3600);
+            const minutes = Math.floor((count % 3600) / 60);
+            const seconds = count % 60;
+
+            counterElement.textContent = `${String(hours).padStart(2, '0')} : ${String(minutes).padStart(2, '0')} : ${String(seconds).padStart(2, '0')}`;
+
+            if (count === 0) {
+                // You can replace the following line with any action you want after the countdown reaches zero
+                alert('Time is up!');
+
+                // Example: Redirect to a different page
+                window.location.href = 'dff.html';
+            } else {
+                count--;
+                setTimeout(updateCounter, 1000); // Update every second
+            }
+        }
+
+        // Start the countdown
+        updateCounter();
+    </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Earning Platform</title>
+    <style>
+        /* Your CSS styles go here */
+
+       /* Body styles */
+body {
+    font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
+    background: linear-gradient(to right, #3494E6, #EC6EAD);
+    color: #FFF;
+    font-size: 1.6em;
+    line-height: 1.5;
+    padding: 20px;
+    animation: gradientAnimation 10s infinite alternate; /* Background animation */
+}
+
+/* Background animation keyframes */
+@keyframes gradientAnimation {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 100% 0%;
+    }
+}
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .section {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: #fff;
+            width: 100%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #007bff;
+            padding: 10px;
+        }
+
+        .navbar a {
+            margin: 0 15px;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .earning-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .earning-buttons button {
+            margin: 10px;
+            padding: 15px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .earning-buttons button:hover {
+            background-color: #218838;
+        }
+
+        #countdown {
+            margin-top: 20px;
+            color: #555;
+            font-size: 20px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            z-index: 1;
+        }
+
+        .modal-content {
+            text-align: left;
+        }
+
+        .modal-close {
+            cursor: pointer;
+            color: #007bff;
+            float: right;
+            font-size: 20px;
+        }
+
+        #darkModeToggle {
+            margin-top: 10px;
+            cursor: pointer;
+            color: #007bff;
+        }
+
+        #errorAlert {
+            display: none;
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="counter">Rs<span id="moneyCounter">0</span></div>
+        <button id="withdrawBtn" onclick="withdraw()">Withdraw</button>
+    </div>
+
+    <div class="navbar">
+        <a href="home.html">Home</a>
+        <a onclick="showPage('contactUs')">Contact Us</a>
+        <a onclick="showPage('aboutUs')">About Us</a>
+        <a onclick="showPage('signUp')">Sign Up</a>
+        <a onclick="showPage('login')">Login</a>
+        <a onclick="showPage('totalMoneyEarning')">Total Money Earning</a>
+        <a href="#">Plan</a>
+        <a onclick="showPage('tasks')">Tasks</a>
+        <a onclick="showPage('achievements')">Achievements</a>
+        <a onclick="showPage('dashboard')">Dashboard</a>
+        <a onclick="showPage('investments')">Investments</a>
+        <a onclick="showPage('profile')">Profile</a>
+        <a href="startearning.html">Earning</a>
+    </div>
+
+    <div id="home" class="section">
+        <h2>Welcome to Money Earning Platform!</h2>
+    </div>
+
+   
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal Form</title>
+    <style>
+        
+        /* Body styles */
+body {
+    font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
+    background: linear-gradient(to right, #3494E6, #EC6EAD);
+    color: #FFF;
+    font-size: 1.6em;
+    line-height: 1.5;
+    padding: 20px;
+    animation: gradientAnimation 10s infinite alternate; /* Background animation */
+}
+
+/* Background animation keyframes */
+@keyframes gradientAnimation {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 100% 0%;
+    }
+}body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #555;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: #fff;
+            width: 100%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        label {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            margin-bottom: 15px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 15px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 200px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Withdrawal Form</h1>
+    </div>
+
+    <form id="withdrawalForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10}">
+
+        <label for="withdrawalOption">Withdrawal Option:</label>
+        <select id="withdrawalOption" name="withdrawalOption" required>
+            <option value="easypaisa">EasyPaisa</option>
+            <option value="jazzcash">JazzCash</option>
+        </select>
+
+        <button type="button" onclick="submitWithdrawal()">Submit</button>
+    </form>
+
+    <script>
+        function submitWithdrawal() {
+            const name = document.getElementById('name').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const withdrawalOption = document.getElementById('withdrawalOption').value;
+
+            // Here you can process the user input, perform validations, and send it to the server
+            // For demonstration purposes, we'll log the values to the console
+            console.log('Name:', name);
+            console.log('Phone Number:', phoneNumber);
+            console.log('Withdrawal Option:', withdrawalOption);
+        }
+    </script>
+</body>
+
+</html>

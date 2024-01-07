@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Earning Platform</title>
+  <style>
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
+    background: linear-gradient(to right, #3494E6, #EC6EAD);
+    color: #FFF;
+    font-size: 1.6em;
+    line-height: 1.5;
+    padding: 20px;
+    animation: gradientAnimation 10s infinite alternate; /* Background animation */
+}
+
+/* Background animation keyframes */
+@keyframes gradientAnimation {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 100% 0%;
+    }
+}
+
+/* Container styles */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* Heading styles */
+h1, h2, h3 {
+    color: #e95846;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+/* Paragraph styles */
+p {
+    margin-bottom: 15px;
+}
+
+/* Link styles */
+a {
+    color: #2db3cb;
+    text-decoration: none;
+    border-bottom: 1px solid #2db3cb;
+    transition: border-color 0.3s ease-in-out;
+}
+
+a:hover {
+    border-color: #FFF;
+}
+
+/* Pricing section styles */
+.pricing-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pricing-table {
+    width: calc(33.33% - 20px);
+    margin: 20px 0;
+    text-align: center;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
+    background: linear-gradient(to right, #232526, #414345); /* Plan box background */
+}
+
+.pricing-table:hover {
+    transform: scale(1.05);
+}
+
+.pricing-title {
+    color: #e95846;
+    background: #FFF;
+    padding: 20px 0;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+.pricing-table.recommended .pricing-title {
+    background: #2db3cb;
+}
+
+.price {
+    background: #403e3d;
+    font-size: 3.4em;
+    font-weight: 700;
+    padding: 20px 0;
+    color: #FFF;
+}
+
+/* List styles within pricing table */
+.table-list {
+    background: #FFF;
+    color: #333;
+    list-style: none;
+}
+
+.table-list li {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 8px;
+    animation: fadeIn 1s ease-in-out;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out; /* Added color transition */
+    font-size: 1.7em; /* Increased font size by 7px */
+}
+
+/* Alternating background colors for list items */
+.table-list li:nth-child(1) {
+    background: #6a0572; /* Different background color for the first list item */
+    color: white; /* White text color for the first list item */
+}
+
+.table-list li:nth-child(2) {
+    background: #9d0208; /* Different background color for the second list item */
+    color: white; /* White text color for the second list item */
+}
+
+.table-list li:nth-child(3) {
+    background: #FFD700; /* Different background color for the third list item */
+    color: white; /* White text color for the third list item */
+}
+
+.table-list li:nth-child(4) {
+    background: #00FF00; /* Different background color for the fourth list item */
+    color: white; /* White text color for the fourth list item */
+}
+
+.table-list li:nth-child(5) {
+    background: #0000FF; /* Different background color for the fifth list item */
+    color: white; /* White text color for the fifth list item */
+}
+
+.table-list li:nth-child(6) {
+    background: #FF1493; /* Different background color for the sixth list item */
+    color: white; /* White text color for the sixth list item */
+}
+
+/* List item animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effect on list items */
+.table-list li:hover {
+    background: #FFD700; /* Background color on hover */
+}
+
+.table-list li:before {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    color: #3fab91;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+}
+
+.table-list li span {
+    font-weight: 400;
+}
+
+.table-list li span.unlimited {
+    color: #FFF;
+    background: #e95846;
+    font-size: 0.9em;
+    padding: 5px 7px;
+    display: inline-block;
+    border-radius: 38px;
+}
+
+/* Buy section within pricing table */
+.table-buy {
+    background: #FFF;
+    padding: 15px;
+    text-align: left;
+    overflow: hidden;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.table-buy p {
+    float: left;
+    color: #e95846;
+    font-weight: 700;
+    font-size: 2.4em;
+}
+
+.table-buy p sup {
+    font-size: 0.5em;
+    position: relative;
+    left: 5px;
+}
+
+/* Call to action button styles */
+.pricing-action {
+    float: right;
+    color: #FFF;
+    background: #e95846;
+    padding: 10px 16px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1.4em;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+    transition: background 0.3s ease-in-out;
+}
+
+.pricing-action:hover {
+    background: #cf4f3e;
+}
+
+/* Hover effect for recommended plan */
+.recommended .pricing-action:hover {
+    background: #228799;  
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 767px) {
+    .pricing-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pricing-table {
+        width: 100%;
+    }
+
+    .table-list li {
+        font-size: 1.3em;
+    }
+}
+
+@media only screen and (min-width: 768px) and/* (min-width: 959px) styles */
+.pricing-table {
+    width: calc(33.33% - 20px);
+}
+
+/* Paragraph container styles */
+.paragraph-container {
+    background: #403e3d;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* (min-width: 959px) styles */
+.pricing-table {
+    width: calc(33.33% - 20px);
+}
+
+/* Paragraph container styles */
+.paragraph-container {
+    background: #403e3d;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Different background colors for spans in list items */
+.table-list li span {
+    font-weight: 400;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.table-list li span:nth-child(1) {
+    background-color: #3494E6; /* Blue */
+}
+
+.table-list li span:nth-child(2) {
+    background-color: #EC6EAD; /* Pink */
+}
+
+.table-list li span:nth-child(3) {
+    background-color: #2db3cb; /* Light Blue */
+}
+
+.table-list li span:nth-child(4) {
+    background-color: #e95846; /* Red */
+}
+
+.table-list li span:nth-child(5) {
+    background-color: #3fab91; /* Green */
+}
+
+.table-list li span:nth-child(6) {
+    background-color: #FFD662; /* Yellow */
+}
+
+/* Additional styles or animations can be added as needed */
+
+
+
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to the Video Earning Platform</h1>
+    <nav>
+      
+    </nav>
+  </header>
+
+  <section class="pricing-plans">
+    <h2>Our Earning Plans and Features</h2>
+    <p>Choose a plan that suits your needs and start earning today.</p>
+
+    <div class="pricing-wrapper clearfix">
+      <!-- Plan 1 -->
+      <!-- Plan 1: Basic Plan -->
+<div class="pricing-table">
+    <h3 class="pricing-title">Basic Plan</h3>
+    <div class="price">360rs</div>
+    <ul class="table-list">
+      <li>Daily Videos <span>50</span></li>
+      <li>Plan Validity <span>Life time</span></li>
+      <li>Daily Profit <span>100rs</span></li>
+      <li>Minimum Withdrawal <span class="unlimited">150rs</span></li>
+      <li>Referral Needed <span class="unlimited">Not</span></li>
+      <li>Referral Commission <span>0%</span></li>
+    </ul>
+    <div class="table-buy">
+      <p>20rs<sup>Bonus</sup></p>
+      <a href="basicplan/signup.html" class="pricing-action">Subscribe</a>
+    </div>
+  </div>
+  
+  <!-- Plan 2: Premium Plan -->
+  <div class="pricing-table recommended">
+    <h3 class="pricing-title">Premium Plan</h3>
+    <div class="price">500rs</div>
+    <ul class="table-list">
+      <li>Daily Videos <span>50</span></li>
+      <li>Plan Validity <span>Life time</span></li>
+      <li>Daily Profit <span>210rs</span></li>
+      <li>Minimum Withdrawal <span class="unlimited">300rs</span></li>
+      <li>Referral Needed <span class="unlimited">Not</span></li>
+      <li>Referral Commission <span>0%</span></li>
+    </ul>
+    <div class="table-buy">
+      <p>80rs<sup>Bonus</sup></p>
+      <a href="premium plan/signup.html" class="pricing-action">Subscribe</a>
+    </div>
+  </div>
+  
+  <!-- Plan 3: Golden Plan -->
+  <div class="pricing-table">
+    <h3 class="pricing-title">Golden Plan</h3>
+    <div class="price">1000rs</div>
+    <ul class="table-list">
+      <li>Daily Videos <span>50</span></li>
+      <li>Plan Validity <span>Life time</span></li>
+      <li>Daily Profit <span>630rs</span></li>
+      <li>Minimum Withdrawal <span class="unlimited">1200rs</span></li>
+      <li>Referral Needed <span class="unlimited">Not</span></li>
+      <li>Referral Commission <span>0%</span></li>
+    </ul>
+    <div class="table-buy">
+      <p>300rs<sup>Bonus</sup></p>
+      <a href="golden plan/signup.html" class="pricing-action">Subscribe</a>
+    </div>
+  </div>
+  
+  <!-- Plan 4: Silver Plan -->
+  <div class="pricing-table">
+    <h3 class="pricing-title">Silver Plan</h3>
+    <div class="price">750rs</div>
+    <ul class="table-list">
+      <li>Daily Videos <span>50</span></li>
+      <li>Plan Validity <span>Life time</span></li>
+      <li>Daily Profit <span>420rs</span></li>
+      <li>Minimum Withdrawal <span class="unlimited">600rs</span></li>
+      <li>Referral Needed <span class="unlimited">Not</span></li>
+      <li>Referral Commission <span>0%</span></li>
+    </ul>
+    <div class="table-buy">
+      <p>150rs<sup>Bonus</sup></p>
+      <a href="silver plan/signup.html" class="pricing-action">Subscribe</a>
+    </div>
+  </div>
+  
+  <!-- Plan 5: Diamond Plan -->
+  <div class="pricing-table recommended">
+    <h3 class="pricing-title">Diamond Plan</h3>
+    <div class="price">1500rs</div>
+    <ul class="table-list">
+      <li>Daily Videos <span>50</span></li>
+      <li>Plan Validity <span>Life time</span></li>
+      <li>Daily Profit <span>900rs</span></li>
+      <li>Minimum Withdrawal <span class="unlimited">2000rs</span></li>
+      <li>Referral Needed <span class="unlimited">Not</span></li>
+      <li>Referral Commission <span>0%</span></li>
+    </ul>
+    <div class="table-buy">
+      <p>500rs<sup>Bonus</sup></p>
+      <a href="diamond plan/signup.html" class="pricing-action">Subscribe</a>
+    </div>
+  </div>
+  
+  <!-- Plan 6: Platinum Plan -->
+  <div class="pricing-table">
+    <h3 class="pricing-title">Platinum Plan</h3>
+    <div class="price">2000rs</div>
+    <ul class="table-list">
+      <li>Daily Videos <span>50</span></li>
+      <li>Plan Validity <span>Life time</span></li>
+      <li>Daily Profit <span>1200rs</span></li>
+      <li>Minimum Withdrawal <span class="unlimited">3000rs</span></li>
+      <li>Referral Needed <span class="unlimited">Not</span></li>
+      <li>Referral Commission <span>0%</span></li>
+    </ul>
+    <div class="table-buy">
+      <p>800rs<sup>Bonus</sup></p>
+      <a href="plantium plan/signup.html" class="pricing-action">Subscribe</a>
+    </div>
+  </div>
+  
+  <!-- Plan 7: Ultimate Plan -->
+  <div class="pricing-table recommended">
+    <h3 class="pricing-title">Ultimate Plan</h3>
+    <div class="price">3000rs</div>
+    <ul class="table-list">
+      <li>Daily Videos <span>50</span></li>
+      <li>Plan Validity <span>Life time</span></li>
+      <li>Daily Profit <span>2000rs</span></li>
+      <li>Minimum Withdrawal <span class="unlimited">5000rs</span></li>
+      <li>Referral Needed <span class="unlimited">Not</span></li>
+      <li>Referral Commission <span>0%</span></li>
+    </ul>
+    <div class="table-buy">
+      <p>1200rs<sup>Bonus</sup></p>
+      <a href="ultimate plan/signup.html" class="pricing-action">Subscribe</a>
+    </div>
+  </div>
+  
+  <!-- Plan 8: Elite Plan -->
+  <div class="pricing-table">
+    <h3 class="pricing-title">Elite Plan</h3>
+    <div class="price">5000rs</div>
+    <ul class="table-list">
+      <li>Daily Videos <span>50</span></li>
+      <li>Plan Validity <span>Life time
+        <span>Life time</span></li>
+        <li>Daily Profit <span>3500rs</span></li>
+        <li>Minimum Withdrawal <span class="unlimited">8000rs</span></li>
+        <li>Referral Needed <span class="unlimited">Not</span></li>
+        <li>Referral Commission <span>0%</span></li>
+      </ul>
+      <div class="table-buy">
+        <p>2500rs<sup>Bonus</sup></p>
+        <a href="#" class="pricing-action">Subscribe</a>
+      </div>
+    </div>
+    
+    <!-- Plan 9: Supreme Plan -->
+    <div class="pricing-table recommended">
+      <h3 class="pricing-title">Supreme Plan</h3>
+      <div class="price">8000rs</div>
+      <ul class="table-list">
+        <li>Daily Videos <span>50</span></li>
+        <li>Plan Validity <span>Life time</span></li>
+        <li>Daily Profit <span>5500rs</span></li>
+        <li>Minimum Withdrawal <span class="unlimited">12000rs</span></li>
+        <li>Referral Needed <span class="unlimited">Not</span></li>
+        <li>Referral Commission <span>0%</span></li>
+      </ul>
+      <div class="table-buy">
+        <p>4000rs<sup>Bonus</sup></p>
+        <a href="supreme plan/signup.html" class="pricing-action">Subscribe</a>
+      </div>
+    </div>
+    
+    <!-- Plan 10: Mega Plan -->
+    <div class="pricing-table">
+      <h3 class="pricing-title">Mega Plan</h3>
+      <div class="price">10000rs</div>
+      <ul class="table-list">
+        <li>Daily Videos <span>50</span></li>
+        <li>Plan Validity <span>Life time</span></li>
+        <li>Daily Profit <span>8000rs</span></li>
+        <li>Minimum Withdrawal <span class="unlimited">20000rs</span></li>
+        <li>Referral Needed <span class="unlimited">Not</span></li>
+        <li>Referral Commission <span>0%</span></li>
+      </ul>
+      <div class="table-buy">
+        <p>6000rs<sup>Bonus</sup></p>
+        <a href="mega plan/signup.html" class="pricing-action">Subscribe</a>
+      </div>
+    </div>
+      
+
+    </div>
+  </section>
+  <section class="about-us">
+    <div class="paragraph-container">
+      <h2>About Us</h2>
+      <p>Our introductory paragraph goes here...</p>
+
+      <p>Explore a world of opportunities on our innovative and dynamic video earning platform. We are dedicated to
+        creating a symbiotic relationship between content creators, viewers, and advertisers, fostering an ecosystem
+        where everyone can thrive.</p>
+
+      <!-- More about your platform... -->
+         <p>
+            Welcome to our cutting-edge video earning platform, a dynamic space where financial opportunities seamlessly intertwine with your daily experiences. In the digital era, our platform serves as a beacon of empowerment, offering users a distinctive avenue to not only enjoy captivating video content but also earn rewards and incentives while engaging with our diverse range of videos. At the heart of our philosophy is a commitment to fostering a symbiotic relationship between content creators, viewers, and advertisers, creating an ecosystem where everyone can thrive.
+
+            Our platform features an array of thoughtfully designed earning plans, each tailored to different preferences and aspirations. Let's delve into the details of some of our standout plans, beginning with the "Basic Plan." Priced at a modest 360rs, this plan grants users access to 50 daily videos, ensuring a consistent flow of engaging content. With a lifetime validity, users can enjoy a daily profit of 100rs. The Basic Plan, with a minimum withdrawal limit of just 150rs and no referral requirements, serves as an excellent entry point for those embarking on their journey toward financial prosperity.
+            
+            Stepping up, our "Premium Plan" offers an enriched experience at 500rs. This plan mirrors the Basic Plan's daily video count but elevates the daily profit to an enticing 210rs. The minimum withdrawal limit is set at 300rs, providing users with more substantial earnings. Notably, the Premium Plan comes with a generous bonus of 80rs, making it an attractive choice for those seeking higher rewards. Like our Basic Plan, there are no referral prerequisites, ensuring a hassle-free and rewarding experience.
+            
+            For those with a taste for luxury and higher returns, our "Golden Plan" stands as the pinnacle of opportunity. Priced at 1000rs, this plan unlocks a daily profit of 630rs, setting the stage for substantial financial gains. With a minimum withdrawal limit of 1200rs and an enticing referral commission of 50%, the Golden Plan offers a comprehensive package for users aiming to maximize their earning potential. The bonus of 300rs sweetens the deal, making it a well-rounded choice for savvy investors.
+            
+            But the journey doesn't conclude here; we have meticulously crafted a total of ten plans to cater to varying preferences and financial goals. Whether you are a casual viewer looking to earn a little extra or a dedicated investor aiming for substantial returns, our range of plans ensures that there's something for everyone. Each plan is backed by a commitment to transparency, security, and user satisfaction.
+            
+            In terms of aesthetics, our website exudes a modern and user-friendly design. The color palette, featuring a blend of deep grays and vibrant accents, creates a visually appealing and professional look. The use of the Roboto font family ensures readability and a contemporary feel. The pricing tables are crafted with precision, featuring a subtle shadow effect for a touch of elegance. Responsive design elements guarantee a seamless experience across various devices, from desktops to smartphones.
+            
+            The hover effect on pricing tables adds a dynamic element, providing users with an interactive preview of each plan. The contrasting colors in the pricing titles not only differentiate the plans but also create a sense of hierarchy. The recommended plan is distinguished with a unique color scheme, guiding users towards a potentially more rewarding option.
+            
+            To enhance user engagement, we have integrated FontAwesome icons, adding a visual element to the list of plan features. Each icon serves as a quick reference, making it easy for users to grasp the key attributes of each plan. The call-to-action buttons are strategically placed, featuring a bold color that invites users to subscribe effortlessly.
+            
+            In conclusion, our video earning website is not just a platform; it's a gateway to financial empowerment and entertainment. With a diverse range of plans, a commitment to user satisfaction, and a visually appealing interface, we invite you to embark on a journey where your time spent watching videos transforms into a rewarding venture. Join us today and experience the future of online earning.
+            
+            
+            
+            
+            
+            
+         </p>
+         <br>
+         <hr>
+         <br>
+         <p>
+            ہمارے جدید ترین ویڈیو کمانے کے پلیٹ فارم میں خوش آمدید، ایک متحرک جگہ جہاں مالی مواقع بغیر کسی رکاوٹ کے آپ کے روزمرہ کے تجربات کے ساتھ جڑے ہوئے ہیں۔ ڈیجیٹل دور میں، ہمارا پلیٹ فارم بااختیار بنانے کی ایک روشنی کا کام کرتا ہے، جو صارفین کو نہ صرف دلکش ویڈیو مواد سے لطف اندوز ہونے کے لیے ایک مخصوص راستہ فراہم کرتا ہے بلکہ ہماری مختلف ویڈیوز کے ساتھ مشغول رہتے ہوئے انعامات اور مراعات بھی حاصل کرتا ہے۔ ہمارے فلسفے کے مرکز میں مواد کے تخلیق کاروں، ناظرین اور مشتہرین کے درمیان ایک علامتی تعلق کو فروغ دینے کا عزم ہے، ایک ایسا ماحولیاتی نظام بنانا جہاں ہر کوئی ترقی کر سکے۔
+
+             ہمارے پلیٹ فارم میں سوچ سمجھ کر ڈیزائن کیے گئے کمائی کے منصوبوں کی ایک صف پیش کی گئی ہے، ہر ایک مختلف ترجیحات اور خواہشات کے مطابق ہے۔ آئیے "بنیادی منصوبہ" سے شروع کرتے ہوئے، اپنے کچھ اسٹینڈ آؤٹ پلانز کی تفصیلات پر غور کریں۔ ایک معمولی 360rs کی قیمت پر، یہ منصوبہ صارفین کو روزانہ 50 ویڈیوز تک رسائی فراہم کرتا ہے، جس سے دل چسپ مواد کے مسلسل بہاؤ کو یقینی بنایا جاتا ہے۔ تاحیات درستگی کے ساتھ، صارفین روزانہ 100 روپے کے منافع سے لطف اندوز ہو سکتے ہیں۔ بنیادی منصوبہ، صرف 150 روپے کی کم از کم واپسی کی حد کے ساتھ اور کوئی حوالہ دینے کی ضرورت نہیں، مالی خوشحالی کی طرف اپنے سفر پر نکلنے والوں کے لیے ایک بہترین انٹری پوائنٹ کے طور پر کام کرتا ہے۔
+            
+             قدم بڑھاتے ہوئے، ہمارا "پریمیم پلان" 500rs میں ایک بھرپور تجربہ پیش کرتا ہے۔ یہ پلان بنیادی پلان کی روزانہ ویڈیو کی گنتی کی عکاسی کرتا ہے لیکن یومیہ منافع کو 210rs تک بڑھا دیتا ہے۔ کم از کم رقم نکلوانے کی حد 300rs مقرر کی گئی ہے، جو صارفین کو زیادہ معقول آمدنی فراہم کرتی ہے۔ خاص طور پر، پریمیئم پلان 80rs کے فراخدلی بونس کے ساتھ آتا ہے، جو اسے زیادہ انعامات کے متلاشی افراد کے لیے ایک پرکشش انتخاب بناتا ہے۔ ہمارے بنیادی منصوبے کی طرح، کوئی ریفرل شرط نہیں ہے، جس سے پریشانی سے پاک اور فائدہ مند تجربہ یقینی ہو۔
+            
+             ان لوگوں کے لیے جو عیش و عشرت اور زیادہ منافع کا شوق رکھتے ہیں، ہمارا "گولڈن پلان" موقع کی چوٹی کے طور پر کھڑا ہے۔ 1000 روپے کی قیمت والا، یہ پلان 630 روپے کا یومیہ منافع کھولتا ہے، جو کافی مالی فوائد کی منزلیں طے کرتا ہے۔ کم از کم واپسی کی حد 1200rs اور 50% کے دلکش ریفرل کمیشن کے ساتھ، گولڈن پلان ان صارفین کے لیے ایک جامع پیکج پیش کرتا ہے جس کا مقصد اپنی کمائی کی صلاحیت کو زیادہ سے زیادہ کرنا ہے۔ 300rs کا بونس ڈیل کو میٹھا بناتا ہے، جو اسے سمجھدار سرمایہ کاروں کے لیے ایک بہترین انتخاب بناتا ہے۔
+            
+             لیکن سفر یہیں ختم نہیں ہوتا۔ ہم نے مختلف ترجیحات اور مالی اہداف کو پورا کرنے کے لیے مجموعی طور پر دس منصوبے تیار کیے ہیں۔ چاہے آپ ایک آرام دہ ناظرین ہیں جو تھوڑا سا اضافی کمانا چاہتے ہیں یا خاطر خواہ منافع حاصل کرنے کے لیے سرشار سرمایہ کار، ہمارے منصوبوں کی حد اس بات کو یقینی بناتی ہے کہ ہر ایک کے لیے کچھ نہ کچھ ہے۔ ہر پلان کو شفافیت، سیکورٹی اور صارف کے اطمینان کے عزم کی حمایت حاصل ہے۔
+            
+             جمالیات کے لحاظ سے، ہماری ویب سائٹ ایک جدید اور صارف دوست ڈیزائن کی حامل ہے۔ رنگ پیلیٹ، جس میں گہرے سرمئی اور متحرک لہجوں کا امتزاج ہوتا ہے، بصری طور پر دلکش اور پیشہ ورانہ شکل پیدا کرتا ہے۔ روبوٹو فونٹ فیملی کا استعمال پڑھنے کی اہلیت اور عصری احساس کو یقینی بناتا ہے۔ قیمتوں کا تعین کرنے والی میزیں درستگی کے ساتھ تیار کی گئی ہیں، جس میں خوبصورتی کے لمس کے لیے ایک لطیف سایہ اثر نمایاں ہے۔ ریسپانسیو ڈیزائن کے عناصر ڈیسک ٹاپس سے لے کر اسمارٹ فونز تک مختلف آلات پر ہموار تجربے کی ضمانت دیتے ہیں۔
+            
+             قیمتوں کا تعین کرنے والے جدولوں پر ہوور اثر ایک متحرک عنصر کا اضافہ کرتا ہے، جو صارفین کو ہر پلان کا انٹرایکٹو پیش نظارہ فراہم کرتا ہے۔ قیمتوں کے عنوانات میں متضاد رنگ نہ صرف منصوبوں میں فرق کرتے ہیں بلکہ درجہ بندی کا احساس بھی پیدا کرتے ہیں۔ تجویز کردہ پلان کو ایک منفرد رنگ سکیم کے ساتھ ممتاز کیا گیا ہے، جو صارفین کو ممکنہ طور پر زیادہ فائدہ مند آپشن کی طرف رہنمائی کرتا ہے۔
+            
+             صارف کی مصروفیت کو بڑھانے کے لیے، ہم نے FontAwesome آئیکنز کو مربوط کیا ہے، پلان کی خصوصیات کی فہرست میں ایک بصری عنصر شامل کیا ہے۔ ہر آئیکن ایک فوری حوالہ کے طور پر کام کرتا ہے، جس سے صارفین کے لیے ہر پلان کی کلیدی خصوصیات کو سمجھنا آسان ہو جاتا ہے۔ کال ٹو ایکشن بٹن حکمت عملی کے ساتھ رکھے گئے ہیں، جس میں ایک بولڈ رنگ ہے جو صارفین کو آسانی سے سبسکرائب کرنے کی دعوت دیتا ہے۔
+            
+             آخر میں، ہماری ویڈیو کمانے کی ویب سائٹ صرف ایک پلیٹ فارم نہیں ہے۔ یہ مالیاتی بااختیار بنانے اور تفریح کا ایک گیٹ وے ہے۔ منصوبوں کی متنوع رینج، صارف کے اطمینان کے عزم اور بصری طور پر دلکش انٹرفیس کے ساتھ، ہم آپ کو ایک ایسے سفر پر جانے کی دعوت دیتے ہیں جہاں ویڈیوز دیکھنے میں آپ کا گزارا ہوا وقت ایک فائدہ مند منصوبے میں بدل جاتا ہے۔ آج ہی ہمارے ساتھ شامل ہوں اور آن لائن کمائی کے مستقبل کا تجربہ کریں۔
+         </p>
+           
+
+      <p>Join us today and experience the future of online earning!</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Video Earning Platform. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
+
